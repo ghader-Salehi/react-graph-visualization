@@ -1,25 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+import Layout from "./Layouts";
+import "./styles/globals.scss";
+import { makeStyles, ThemeProvider, StylesProvider ,createMuiTheme,jssPreset } from "@material-ui/core";
+import { create } from "jss";
+import rtl from "jss-rtl";
 
-function App() {
+const useStyles = makeStyles((theme) => ({
+  fontStyle: {
+    fontFamily: "iranyekan",
+  },
+}));
+const App = () => {
+
+  const classes = useStyles();
+
+  const jss = create({ plugins: [...jssPreset().plugins, rtl()] });
+  const rtlTheme = createMuiTheme({ direction: "rtl" });
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <ThemeProvider theme={rtlTheme}> 
+        <StylesProvider jss={jss}>
+          <div  className={classes.fontStyle}>
+            <Layout />
+          </div>
+        </StylesProvider>
+      </ThemeProvider>
+    </>
   );
-}
+};
 
 export default App;
