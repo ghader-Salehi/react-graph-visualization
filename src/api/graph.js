@@ -1,10 +1,14 @@
 import axios from "axios"
 
 
-export const createGraph = async ()=>{
-    return await axios.post();
+export const createGraph = async (data)=>{
+    return await axios.post('',data);
 }
 
-export const uploadData = async ()=>{
-    return await axios.post();
+export const uploadData = async (img)=>{
+    return await axios.post('',img,{
+        headers: {
+            'Content-Type': 'multipart/form-data'
+        }
+    });
 }

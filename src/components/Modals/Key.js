@@ -103,7 +103,7 @@ const Key = ({ isOpen ,handleClose })=>{
     }
     setLinkDest("");
     setdp("");
-    setCurrentKeyName(`source${state.nodes.length + 1}`);
+    setCurrentKeyName(`key${state.nodes.length + 1}`);
   };
 
 
