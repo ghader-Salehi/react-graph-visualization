@@ -1,0 +1,321 @@
+{
+    "edges": 14,
+    "boxes": 4,
+    "firstBlackPixel": {
+        "x": 1,
+        "y": 0
+    },
+    "vertices": [
+        {
+            "x": 1,
+            "y": 0,
+            "top": 0,
+            "left": 0,
+            "id": "1,0",
+            "type": "distribution",
+            "adj": []
+        },
+        {
+            "x": 191,
+            "y": 67,
+            "top": 33,
+            "left": 99,
+            "id": "191,67",
+            "type": "distribution",
+            "adj": []
+        },
+        {
+            "x": 152,
+            "y": 67,
+            "top": 33,
+            "left": 79,
+            "id": "152,67",
+            "type": "distribution",
+            "adj": []
+        },
+        {
+            "x": 152,
+            "y": 146,
+            "top": 72,
+            "left": 79,
+            "id": "152,146",
+            "type": "distribution",
+            "adj": []
+        },
+        {
+            "x": 126,
+            "y": 67,
+            "top": 33,
+            "left": 65,
+            "id": "126,67",
+            "type": "distribution",
+            "adj": []
+        },
+        {
+            "x": 191,
+            "y": 198,
+            "top": 98,
+            "left": 99,
+            "id": "191,198",
+            "type": "distribution",
+            "adj": []
+        },
+        {
+            "x": 87,
+            "y": 198,
+            "top": 98,
+            "left": 45,
+            "id": "87,198",
+            "type": "distribution",
+            "adj": []
+        },
+        {
+            "x": 87,
+            "y": 146,
+            "top": 72,
+            "left": 45,
+            "id": "87,146",
+            "type": "distribution",
+            "adj": []
+        },
+        {
+            "x": 122,
+            "y": 146,
+            "top": 72,
+            "left": 63,
+            "id": "122,146",
+            "type": "distribution",
+            "adj": []
+        },
+        {
+            "x": 87,
+            "y": 69,
+            "top": 34,
+            "left": 45,
+            "id": "87,69",
+            "type": "distribution",
+            "adj": []
+        },
+        {
+            "x": 100,
+            "y": 69,
+            "top": 34,
+            "left": 52,
+            "id": "100,69",
+            "type": "distribution",
+            "adj": []
+        },
+        {
+            "x": 3,
+            "y": 69,
+            "top": 34,
+            "left": 1,
+            "id": "3,69",
+            "type": "distribution",
+            "adj": []
+        },
+        {
+            "x": 3,
+            "y": 52,
+            "top": 25,
+            "left": 1,
+            "id": "3,52",
+            "type": "distribution",
+            "adj": []
+        },
+        {
+            "x": 1,
+            "y": 26,
+            "top": 12,
+            "left": 0,
+            "id": "1,26",
+            "type": "distribution",
+            "adj": []
+        },
+        {
+            "x": 184,
+            "y": 5,
+            "top": 2,
+            "left": 95,
+            "id": "184,5",
+            "type": "source",
+            "adj": []
+        },
+        {
+            "x": 155,
+            "y": 129,
+            "top": 64,
+            "left": 80,
+            "id": "155,129",
+            "type": "switch",
+            "adj": []
+        },
+        {
+            "x": 107,
+            "y": 141,
+            "top": 70,
+            "left": 55,
+            "id": "107,141",
+            "type": "switch",
+            "adj": []
+        },
+        {
+            "x": 5,
+            "y": 11,
+            "top": 5,
+            "left": 2,
+            "id": "5,11",
+            "type": "switch",
+            "adj": []
+        }
+    ],
+    "paths": [
+        {
+            "start": 16,
+            "destination": 14,
+            "distance": 369,
+            "paths": [
+                {
+                    "x": 107,
+                    "y": 141,
+                    "top": 70,
+                    "left": 55,
+                    "id": "107,141",
+                    "type": "switch",
+                    "adj": []
+                },
+                {
+                    "x": 87,
+                    "y": 146,
+                    "top": 72,
+                    "left": 45,
+                    "id": "87,146",
+                    "type": "distribution",
+                    "adj": []
+                },
+                {
+                    "x": 87,
+                    "y": 198,
+                    "top": 98,
+                    "left": 45,
+                    "id": "87,198",
+                    "type": "distribution",
+                    "adj": []
+                },
+                {
+                    "x": 191,
+                    "y": 198,
+                    "top": 98,
+                    "left": 99,
+                    "id": "191,198",
+                    "type": "distribution",
+                    "adj": []
+                },
+                {
+                    "x": 191,
+                    "y": 67,
+                    "top": 33,
+                    "left": 99,
+                    "id": "191,67",
+                    "type": "distribution",
+                    "adj": []
+                },
+                {
+                    "x": 184,
+                    "y": 5,
+                    "top": 2,
+                    "left": 95,
+                    "id": "184,5",
+                    "type": "source",
+                    "adj": []
+                }
+            ],
+            "pathIndexes": [
+                16,
+                7,
+                6,
+                5,
+                1,
+                14
+            ]
+        },
+        {
+            "start": 17,
+            "destination": 14,
+            "distance": 194,
+            "paths": [
+                {
+                    "x": 5,
+                    "y": 11,
+                    "top": 5,
+                    "left": 2,
+                    "id": "5,11",
+                    "type": "switch",
+                    "adj": []
+                },
+                {
+                    "x": 1,
+                    "y": 0,
+                    "top": 0,
+                    "left": 0,
+                    "id": "1,0",
+                    "type": "distribution",
+                    "adj": []
+                },
+                {
+                    "x": 184,
+                    "y": 5,
+                    "top": 2,
+                    "left": 95,
+                    "id": "184,5",
+                    "type": "source",
+                    "adj": []
+                }
+            ],
+            "pathIndexes": [
+                17,
+                0,
+                14
+            ]
+        },
+        {
+            "start": 15,
+            "destination": 1,
+            "distance": 101,
+            "paths": [
+                {
+                    "x": 155,
+                    "y": 129,
+                    "top": 64,
+                    "left": 80,
+                    "id": "155,129",
+                    "type": "switch",
+                    "adj": []
+                },
+                {
+                    "x": 152,
+                    "y": 67,
+                    "top": 33,
+                    "left": 79,
+                    "id": "152,67",
+                    "type": "distribution",
+                    "adj": []
+                },
+                {
+                    "x": 191,
+                    "y": 67,
+                    "top": 33,
+                    "left": 99,
+                    "id": "191,67",
+                    "type": "distribution",
+                    "adj": []
+                }
+            ],
+            "pathIndexes": [
+                15,
+                2,
+                1
+            ]
+        }
+    ]
+}
