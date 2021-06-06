@@ -48,7 +48,7 @@ public class Processor {
         for (int j = 0; j < NODES.size(); j++) {
             DijkstraData dijkstraData = new DijkstraData(j);
             // 2. closest switch to electricity gets selected
-            if (NODES.get(j).getId().startsWith("k")) {
+            if (NODES.get(j).getColor().equals("yellow")) {
                 // get switch paths to electricity
                 dijkstraData = dijkstra.dijkstra(ADJ, j);
                 // choose closest to electricity
@@ -76,7 +76,7 @@ public class Processor {
         for (int i = 0; i < dijkstraData.destinations.size(); i++) {
             int destination = dijkstraData.destinations.get(i);
             int distance = dijkstraData.distances.get(i);
-            if (NODES.get(destination).getId().equals("Source")) { // TO POWER
+            if (NODES.get(destination).getColor().equals("red")) { // TO POWER
                 if (switchShortPathIndex == -1) {
                     switchShortPath = dijkstraData.distances.get(i);
                     switchShortPathIndex = i;
@@ -100,10 +100,10 @@ public class Processor {
         }//end for
 
         // setup real values
-        for (int i = 0; i < LINKS.size(); i++) {
-            int sourceIndex = getNodeIndex(LINKS.get(i).getSource());
-            int targetIndex = getNodeIndex(LINKS.get(i).getTarget());
-            int label = Integer.parseInt(LINKS.get(i).getLabel());
+        for (CustomGraphLink link : LINKS) {
+            int sourceIndex = getNodeIndex(link.getSource());
+            int targetIndex = getNodeIndex(link.getTarget());
+            int label = Integer.parseInt(link.getLabel());
             ADJ.get(sourceIndex).set(targetIndex, label);
             ADJ.get(targetIndex).set(sourceIndex, label);
         }//end for
