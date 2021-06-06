@@ -6,6 +6,7 @@ import Switch from "../../assets/icons/icons8-light-switch-128.png";
 import Dst from "../../assets/icons/icons8-junction-80.png";
 import data from "../../clean-response.json";
 import Circle from '../../assets/icons/icons8-red-circle-96.png'
+import {uploadData} from '../../api/graph'
 
 const useStyles = makeStyles((theme) => ({
   fontStyle: {
@@ -22,6 +23,7 @@ const Index = () => {
   const [checked, setChecked] = React.useState(false);
 
   const [uploadedImageUrl, setUploadedImageUrl] = useState("");
+  const [uploadedFile,setUploadedFile] = useState(null)
   const [showProccessedImage, setShowProccessedImage] = useState(false);
   const classes = useStyles();
 
@@ -30,10 +32,22 @@ const Index = () => {
   };
   const handleAddFile = (e) => {
     console.log(URL.createObjectURL(e.target.files[0]));
+    setUploadedFile(e.target.files[0]);
     setUploadedImageUrl(URL.createObjectURL(e.target.files[0]));
   };
+  
   const handleProccess = () => {
-    setShowProccessedImage(true);
+    let fd = new FormData();
+    fd.append('file',uploadedFile);
+
+    uploadData(fd)
+      .then(res=>{
+        console.log(res)
+        setShowProccessedImage(true);
+      }).catch(err=>{
+        console.log(err)
+      })
+
   };
 
   const setPositionInPage = (top, left) => {
