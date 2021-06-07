@@ -6,6 +6,7 @@ import Switch from '../../assets/icons/icons8-light-switch-128.png';
 import Dst from '../../assets/icons/icons8-junction-80.png';
 import Circle from '../../assets/icons/icons8-red-circle-96.png';
 import { uploadData } from '../../api/graph';
+import '../../styles/uploadDataset.css';
 
 const useStyles = makeStyles((theme) => ({
   fontStyle: {
@@ -24,7 +25,8 @@ const Index = () => {
   const [uploadedImageUrl, setUploadedImageUrl] = useState('');
   const [uploadedFile, setUploadedFile] = useState(null);
   const [showProccessedImage, setShowProccessedImage] = useState(false);
-  const [data, setData] = useState({});
+  const [loading, setLoading] = useState(false);
+  const [data, setData] = useState(null);
   const classes = useStyles();
 
   const handleChange = (event) => {
@@ -39,12 +41,14 @@ const Index = () => {
   const handleProccess = () => {
     let fd = new FormData();
     fd.append('file', uploadedFile);
+    setLoading(true);
 
     uploadData(fd)
       .then((res) => {
         console.log(res);
         setData(res.data);
         setShowProccessedImage(true);
+        setLoading(false);
       })
       .catch((err) => {
         console.log(err);
@@ -153,7 +157,7 @@ const Index = () => {
             color='primary'
             className={clsx([classes.fontStyle, ''])}
           >
-            پردازش
+            {!loading ? <span>پردازش</span> : <div className='dots' />}
           </Button>
         )}
       </div>
