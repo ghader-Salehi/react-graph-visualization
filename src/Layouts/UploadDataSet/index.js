@@ -40,6 +40,7 @@ const Index = () => {
   const handleProccess = () => {
     let fd = new FormData();
     fd.append('file', uploadedFile);
+    fd.append('flag',checked)
 
     uploadData(fd)
       .then((res) => {
@@ -70,6 +71,11 @@ const Index = () => {
     else if (type === 'source') return Battery;
     else if (type === 'switch') return Switch;
   };
+  const clearData = () => {
+    setUploadedImageUrl('');
+    setUploadedFile(null);
+    setShowProccessedImage(false)
+  }
   return (
     <>
       <div className='d-flex'>
@@ -88,6 +94,11 @@ const Index = () => {
             inputProps={{ 'aria-label': 'secondary checkbox' }}
           />
         </div>
+        <div className='m-3'>
+            <Button onClick={clearData}>
+                <img style={{width:'35px',heght:'35px'}} src={Refresh} />
+            </Button>
+        </div>
       </div>
       <div className='d-flex justify-content-center'>
         {/* <canvas/> */}
@@ -96,7 +107,7 @@ const Index = () => {
             {uploadedImageUrl && (
               <div>
                 <img
-                  style={{ width: '400px', height: '400px' }}
+                  style={{ width: '600px', height: '600px' }}
                   src={uploadedImageUrl}
                 ></img>
 
@@ -140,7 +151,7 @@ const Index = () => {
         <div>
           {uploadedImageUrl && (
             <img
-              style={{ width: '400px', height: '400px', marginRight: '5rem' }}
+              style={{ width: '600px', height: '600px', marginRight: '5rem' }}
               src={uploadedImageUrl}
             ></img>
           )}
