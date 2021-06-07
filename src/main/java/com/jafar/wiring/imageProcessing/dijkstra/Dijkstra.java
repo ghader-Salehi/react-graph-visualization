@@ -72,6 +72,9 @@ public class Dijkstra {
 
             // Mark the picked vertex as
             // processed
+            if(nearestVertex == -1)
+                continue;
+
             added[nearestVertex] = true;
 
             // Update dist value of the
@@ -103,15 +106,15 @@ public class Dijkstra {
                                       int[] distances,
                                       int[] parents, DijkstraData dijkstraData) {
         int nVertices = distances.length;
-        System.out.print("Vertex\t Distance\tPath");
+//        System.out.print("Vertex\t Distance\tPath");
 
         for (int vertexIndex = 0;
              vertexIndex < nVertices;
              vertexIndex++) {
             if (vertexIndex != startVertex) {
-                System.out.print("\n" + startVertex + " -> ");
-                System.out.print(vertexIndex + " \t\t ");
-                System.out.print(distances[vertexIndex] + "\t\t");
+//                System.out.print("\n" + startVertex + " -> ");
+//                System.out.print(vertexIndex + " \t\t ");
+//                System.out.print(distances[vertexIndex] + "\t\t");
                 // store data to dijkstraData
                 dijkstraData.destinations.add(vertexIndex);
                 dijkstraData.distances.add(distances[vertexIndex]);
@@ -133,7 +136,7 @@ public class Dijkstra {
             return;
         }
         printPath(parents[currentVertex], parents, dijkstraData);
-        System.out.print(currentVertex + " ");
+//        System.out.print(currentVertex + " ");
         dijkstraData.pathToDestination.get(dijkstraData.pathToDestination.size() - 1).add(currentVertex);
     }
 }//end class

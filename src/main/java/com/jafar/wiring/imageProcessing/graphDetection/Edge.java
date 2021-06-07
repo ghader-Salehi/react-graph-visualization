@@ -6,18 +6,13 @@ public class Edge {
     private int x;
     private int y;
     private ArrayList<Character> directions = new ArrayList<>();
-    private String type;
     private Vertice parentVertice;
+    private boolean door = false;
+    private boolean paired = false;
 
     public Edge(int x, int y) {
         this.x = x;
         this.y = y;
-    }
-
-    public Edge(int x, int y, char direction) {
-        this.x = x;
-        this.y = y;
-        directions.add(direction);
     }
 
     public Edge(int x, int y, char direction, Vertice parentVertice) {
@@ -27,8 +22,27 @@ public class Edge {
         this.parentVertice = parentVertice;
     }
 
+    public Edge(int x, int y, Vertice parentVertice, boolean door) {
+        this.x = x;
+        this.y = y;
+        this.parentVertice = parentVertice;
+        this.door = door;
+    }
+
+    public Edge(int x, int y, Vertice parentVertice, char direction, boolean door) {
+        this.x = x;
+        this.y = y;
+        this.parentVertice = parentVertice;
+        this.door = door;
+        this.directions.add(direction);
+    }
+
     public boolean isInsideEdge (int pixelX, int pixelY, int radius) {
         return (pixelX > x - radius) && (pixelX < x + radius) && (pixelY < y + radius) && (pixelY > y - radius);
+    }
+
+    public boolean containsDirection(char direction) {
+        return directions.contains(direction);
     }
 
     public boolean addDirection(char direction) {
@@ -68,14 +82,6 @@ public class Edge {
         this.directions = directions;
     }
 
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
-    }
-
     public Vertice getParentVertice() {
         return parentVertice;
     }
@@ -84,11 +90,29 @@ public class Edge {
         this.parentVertice = parentVertice;
     }
 
+    public boolean isDoor() {
+        return door;
+    }
+
+    public void setDoor(boolean door) {
+        this.door = door;
+    }
+
+    public boolean isPaired() {
+        return paired;
+    }
+
+    public void setPaired(boolean paired) {
+        this.paired = paired;
+    }
+
     @Override
     public String toString() {
         return "Edge{" +
                 "x=" + x +
                 ", y=" + y +
+                ", directions=" + directions +
+                ", door=" + door +
                 '}' + "   parentVertice=" + (parentVertice == null ? "null" : parentVertice.getId());
     }
 }

@@ -4,7 +4,7 @@ public class CustomGraphLink {
     private String source;
     private String target;
     private String label;
-    private String color;
+    private String color = "";
 
     public CustomGraphLink(String source, String target, String label, String color) {
         this.source = source;

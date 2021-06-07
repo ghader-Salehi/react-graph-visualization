@@ -13,6 +13,7 @@ public class DatasetEndpoint {
     ArrayList<Vertice> vertices = new ArrayList<>();
     ArrayList<Path> paths = new ArrayList<>();
 
+
     public DatasetEndpoint(int edges, int boxes, Pixel firstBlackPixel, ArrayList<Vertice> vertices, ArrayList<Path> paths) {
         // json minimizing
         for(Vertice vertice : vertices)
