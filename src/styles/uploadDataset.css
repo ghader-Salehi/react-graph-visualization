@@ -1,5 +1,5 @@
 .dots {
-  margin: 10px 3px;
+  margin: 10px 6px;
   width: 4px;
   height: 4px;
   border-radius: 50%;
@@ -15,4 +15,13 @@
   100% {
     box-shadow: 19px 0 0 0, 38px 0 0 3px, 57px 0 0 7px;
   }
+}
+
+.path-line {
+  height: 5px;
+  background-color: rgb(228, 105, 105);
+  position: absolute;
+  transform-origin: 0px 0px;
+  border-radius: 3px;
+  z-index: 1;
 }

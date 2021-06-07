@@ -6,6 +6,7 @@ import Switch from '../../assets/icons/icons8-light-switch-128.png';
 import Dst from '../../assets/icons/icons8-junction-80.png';
 import Circle from '../../assets/icons/icons8-red-circle-96.png';
 import { uploadData } from '../../api/graph';
+import Refresh from '../../assets/icons/icons8-synchronize-96.png';
 import '../../styles/uploadDataset.css';
 
 const useStyles = makeStyles((theme) => ({
@@ -38,9 +39,14 @@ const Index = () => {
     setUploadedImageUrl(URL.createObjectURL(e.target.files[0]));
   };
 
+  function calcAngleDegrees(x, y) {
+    return (Math.atan2(y, x) * 180) / Math.PI;
+  }
+
   const handleProccess = () => {
     let fd = new FormData();
     fd.append('file', uploadedFile);
+    fd.append('flag', checked);
     setLoading(true);
 
     uploadData(fd)
@@ -73,6 +79,11 @@ const Index = () => {
     else if (type === 'source') return Battery;
     else if (type === 'switch') return Switch;
   };
+  const clearData = () => {
+    setUploadedImageUrl('');
+    setUploadedFile(null);
+    setShowProccessedImage(false);
+  };
   return (
     <>
       <div className='d-flex'>
@@ -91,6 +102,11 @@ const Index = () => {
             inputProps={{ 'aria-label': 'secondary checkbox' }}
           />
         </div>
+        <div className='m-3'>
+          <Button onClick={clearData}>
+            <img style={{ width: '35px', heght: '35px' }} src={Refresh} />
+          </Button>
+        </div>
       </div>
       <div className='d-flex justify-content-center'>
         {/* <canvas/> */}
@@ -99,7 +115,7 @@ const Index = () => {
             {uploadedImageUrl && (
               <div>
                 <img
-                  style={{ width: '400px', height: '400px' }}
+                  style={{ width: '600px', height: '600px' }}
                   src={uploadedImageUrl}
                 ></img>
 
@@ -115,25 +131,39 @@ const Index = () => {
                           left: `${item.left}%`,
                           width: '30px',
                           height: '30px',
+                          zIndex: '3',
                         }}
                       ></img>
                     </>
                   );
                 })}
-                {data.paths.map((item) =>
-                  item.paths.map((i) => {
-                    return (
-                      <img
-                        src={Circle}
-                        style={{
-                          position: 'absolute',
-                          top: `${i.top}%`,
-                          left: `${i.left}%`,
-                          width: '20px',
-                          height: '20px',
-                        }}
-                      ></img>
-                    );
+                {data.paths.map((path) =>
+                  path.paths.map((item, index, array) => {
+                    if (index < array.length - 1) {
+                      let y = item.y - array[index + 1].y;
+                      let x = array[index + 1].x - item.x;
+                      let yPercentage = Math.abs(
+                        item.top - array[index + 1].top
+                      );
+                      let xPercentage = Math.abs(
+                        item.left - array[index + 1].left
+                      );
+                      let widthPercentage = Math.sqrt(
+                        Math.pow(yPercentage, 2) + Math.pow(xPercentage, 2)
+                      );
+                      let angle = calcAngleDegrees(x, y); // x,y reversed in caclAngleDegrees
+                      return (
+                        <div
+                          className='path-line'
+                          style={{
+                            top: `${item.top}%`,
+                            left: `${item.left}%`,
+                            width: `${widthPercentage}%`,
+                            transform: `rotate(${-1 * angle}deg)`,
+                          }}
+                        />
+                      );
+                    }
                   })
                 )}
               </div>
@@ -143,7 +173,7 @@ const Index = () => {
         <div>
           {uploadedImageUrl && (
             <img
-              style={{ width: '400px', height: '400px', marginRight: '5rem' }}
+              style={{ width: '600px', height: '600px', marginRight: '5rem' }}
               src={uploadedImageUrl}
             ></img>
           )}
