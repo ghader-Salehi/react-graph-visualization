@@ -7,6 +7,7 @@ import Dst from "../../assets/icons/icons8-junction-80.png";
 import data from "../../clean-response.json";
 import Circle from '../../assets/icons/icons8-red-circle-96.png'
 import {uploadData} from '../../api/graph'
+import Refresh from '../../assets/icons/icons8-synchronize-96.png';
 
 const useStyles = makeStyles((theme) => ({
   fontStyle: {
